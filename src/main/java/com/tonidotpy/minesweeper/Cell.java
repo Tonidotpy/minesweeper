@@ -68,7 +68,7 @@ public class Cell extends ImageView {
         this.setImage(image);
     }
 
-    // Toggle state between empty, flag and question mark (shown is excluded)
+    // Toggles state between 'empty', 'flag' and 'question mark' ('shown' is excluded)
     public void ToggleState() {
         this.state = State.values()[(this.state.ordinal() + 1) % 3];
         Image image;
