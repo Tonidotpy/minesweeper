@@ -138,7 +138,7 @@ public class Game extends VBox {
             }
         }
 
-        if (value < -99) {
+        if (value < -99 || value > 999) {
             for (var v : view) {
                 v.setImage(ImageManager.getDigitMinusImage());
             }
@@ -277,7 +277,7 @@ public class Game extends VBox {
         alert.setTitle("Sconfitta");
         alert.setHeaderText(null);
         alert.setContentText("Hai perso!");
-        alert.showAndWait();
+        alert.show();
     }
     public void Win() {
         timeLine.stop();
@@ -290,6 +290,6 @@ public class Game extends VBox {
         alert.setTitle("Vittoria");
         alert.setHeaderText(null);
         alert.setContentText("Hai vinto!");
-        alert.showAndWait();
+        alert.show();
     }
 }
