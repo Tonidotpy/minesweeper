@@ -56,7 +56,11 @@ public class Game extends VBox {
         this.score = 0;
         this.time  = 0;
         this.timeLine = new Timeline(
-                new KeyFrame(Duration.seconds(1), actionEvent -> UpdateDigitsView(timeView, ++time))
+                new KeyFrame(Duration.seconds(1), actionEvent -> {
+                    UpdateDigitsView(timeView, ++time);
+                    if (time > 999)
+                        Lose(null);
+                })
         );
         this.timeLine.setCycleCount(Animation.INDEFINITE);
         this.timeLine.setAutoReverse(false);
@@ -255,7 +259,8 @@ public class Game extends VBox {
     public void Lose(Cell cell) {
         timeLine.stop();
 
-        cell.setType(Cell.Type.EXPLODED);
+        if (cell != null)
+            cell.setType(Cell.Type.EXPLODED);
 
         for (var row : grid.getGrid()) {
             for (var col : row) {
